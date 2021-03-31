@@ -11,7 +11,6 @@ public class FileUtils {
                 deleteFiles(eachFile);
             }
         }
-
         return filesToBedeleted.delete();
     }
 }
