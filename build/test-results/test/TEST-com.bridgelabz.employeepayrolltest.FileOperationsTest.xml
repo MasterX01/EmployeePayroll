@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bridgelabz.employeepayrolltest.FileOperationsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-31T17:23:41" hostname="DESKTOP-2DC5FKU" time="0.151">
+  <properties/>
+  <testcase name="givenPath_CheckIfExists()" classname="com.bridgelabz.employeepayrolltest.FileOperationsTest" time="0.151"/>
+  <system-out><![CDATA[C:\Users\user\TempPlay\temp1
+C:\Users\user\TempPlay\temp2
+C:\Users\user\TempPlay\temp3
+C:\Users\user\TempPlay\temp4
+C:\Users\user\TempPlay\temp5
+C:\Users\user\TempPlay\temp6
+C:\Users\user\TempPlay\temp7
+C:\Users\user\TempPlay\temp8
+C:\Users\user\TempPlay\temp9
+C:\Users\user\TempPlay\temp1
+C:\Users\user\TempPlay\temp2
+C:\Users\user\TempPlay\temp3
+C:\Users\user\TempPlay\temp4
+C:\Users\user\TempPlay\temp5
+C:\Users\user\TempPlay\temp6
+C:\Users\user\TempPlay\temp7
+C:\Users\user\TempPlay\temp8
+C:\Users\user\TempPlay\temp9
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

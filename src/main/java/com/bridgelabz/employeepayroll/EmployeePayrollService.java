@@ -1,8 +1,7 @@
 package com.bridgelabz.employeepayroll;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class EmployeePayrollService {
 
