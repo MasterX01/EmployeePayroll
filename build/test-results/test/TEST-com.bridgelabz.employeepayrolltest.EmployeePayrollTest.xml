@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-01T10:27:48" hostname="DESKTOP-2DC5FKU" time="0.041">
+<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-01T10:51:14" hostname="DESKTOP-2DC5FKU" time="0.058">
   <properties/>
-  <testcase name="givenEmployees_ShouldWriteDataToFile()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollTest" time="0.041"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="givenEmployees_ShouldWriteDataToFile_AndMatchWithTheNumberOfEntries()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollTest" time="0.058"/>
+  <system-out><![CDATA[id=123, name=Akash, salary=2100000.0
+id=456, name=Naman, salary=1200000.0
+id=789, name=Utkarsh, salary=1000000.0
+3
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

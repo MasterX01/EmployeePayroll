@@ -16,6 +16,8 @@ public class EmployeePayrollService {
         this.employeePayrollList = employeePayrollList;
     }
 
+    public EmployeePayrollService(){ }
+
     public static void main(String[] args) {
 
         System.out.println("Welcome to Employee Payroll Program!!");
@@ -51,6 +53,5 @@ public class EmployeePayrollService {
     public void writeEmployeePayrollData() {
         System.out.println("Employee Payroll List: " + employeePayrollList);
     }
-
 
 }

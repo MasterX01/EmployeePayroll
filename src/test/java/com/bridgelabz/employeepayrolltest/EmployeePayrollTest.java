@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class EmployeePayrollTest {
     @Test
-    public void givenEmployees_ShouldWriteDataToFile() {
+    public void givenEmployees_ShouldWriteDataToFile_AndMatchWithTheNumberOfEntries() {
         EmployeePayrollData[] employeePayrollData = {
                                                     new EmployeePayrollData(123, "Akash", 2100000),
                                                     new EmployeePayrollData(456, "Naman", 1200000),
@@ -21,5 +21,8 @@ public class EmployeePayrollTest {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService(Arrays.asList(employeePayrollData));
         employeePayrollService.writeEmployeePayrollDataTOFile(EmployeePayrollService.IOService.FILE_IO);
         Assertions.assertTrue(Files.exists(Paths.get("./" + EmployeePayrollFileIOService.PAYROLL_FILE)));
+        EmployeePayrollFileIOService.printData();
+        Assertions.assertEquals(3, EmployeePayrollFileIOService.countEntries());
+
     }
 }
