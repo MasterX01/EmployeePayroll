@@ -23,6 +23,12 @@ public class EmployeePayrollTest {
         Assertions.assertTrue(Files.exists(Paths.get("./" + EmployeePayrollFileIOService.PAYROLL_FILE)));
         EmployeePayrollFileIOService.printData();
         Assertions.assertEquals(3, EmployeePayrollFileIOService.countEntries());
+    }
 
+    @Test
+    public void givenEmployees_whenReadingFromFile_ShouldMatchWithNumOfEntries() {
+        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+        long count = employeePayrollService.readEmployeePayrollDataFromFile(EmployeePayrollService.IOService.FILE_IO);
+        Assertions.assertEquals(3, count);
     }
 }

@@ -1,5 +1,6 @@
 package com.bridgelabz.employeepayroll;
 
+import java.nio.file.Files;
 import java.util.*;
 import java.io.*;
 
@@ -54,4 +55,12 @@ public class EmployeePayrollService {
         System.out.println("Employee Payroll List: " + employeePayrollList);
     }
 
+    public long readEmployeePayrollDataFromFile(IOService ioService){
+        List<EmployeePayrollData> employeeList = new ArrayList<>();
+        try{
+            Files.lines(new File(String.valueOf(ioService)).toPath()).map(line -> line.trim()).
+                    forEach(line -> System.out.println(line));
+        }catch (IOException e){ }
+        return EmployeePayrollFileIOService.countEntries();
+    }
 }
