@@ -4,6 +4,9 @@ import java.util.*;
 import java.io.*;
 
 public class EmployeePayrollService {
+    public enum IOService{
+        FILE_IO, CONSOLE_IO;
+    }
 
     private List<EmployeePayrollData> employeePayrollList;
     private Object writeEmployeePayrollData;
@@ -37,7 +40,17 @@ public class EmployeePayrollService {
         employeePayrollList.add(new EmployeePayrollData(id, name, salary));
     }
 
+    public void writeEmployeePayrollDataTOFile(IOService ioService){
+        if(ioService.equals(IOService.CONSOLE_IO)){
+            System.out.println("\nWriting Employee Payroll Data to Console\n" + employeePayrollList);
+        }else if(ioService.equals(IOService.FILE_IO)){
+            new EmployeePayrollFileIOService().writeDataToFile(employeePayrollList);
+        }
+    }
+
     public void writeEmployeePayrollData() {
         System.out.println("Employee Payroll List: " + employeePayrollList);
     }
+
+
 }
