@@ -1,4 +1,4 @@
-package com.bridgelabz.employeepayrolldb;
+package com.bridgelabz.employeepayroll;
 
 import java.sql.Connection;
 import java.sql.Driver;

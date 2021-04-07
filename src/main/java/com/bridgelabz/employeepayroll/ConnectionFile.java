@@ -1,10 +1,8 @@
-package com.bridgelabz.employeepayrolldb;
+package com.bridgelabz.employeepayroll;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 
 public class ConnectionFile {
     public Connection dbConnection() throws SQLException, ClassNotFoundException {
@@ -15,4 +13,3 @@ public class ConnectionFile {
         return DriverManager.getConnection(jdbcURL, username, password);
     }
 }
-
