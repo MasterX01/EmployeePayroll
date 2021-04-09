@@ -2,11 +2,11 @@ package com.bridgelabz.employeepayrolltest;
 
 import com.bridgelabz.employeepayroll.EmployeeDBData;
 import com.bridgelabz.employeepayroll.EmployeeDBService;
-import com.bridgelabz.employeepayroll.EmployeePayrollDB;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 public class EmployeePayrollDBTest {
@@ -24,5 +24,14 @@ public class EmployeePayrollDBTest {
         double salary = 2500000;
         EmployeeDBData employeeSalary = employeeDBService.updateSalary(name,salary);
         Assertions.assertEquals(salary, employeeSalary.getSalary());
+    }
+
+    @Test
+    public void givenDateRange_ShouldReturnEmployeesWhoJoinedInDateRange() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        String startDate = "2018-01-01";
+        String endDate = "2020-01-01";
+        List<EmployeeDBData> employeeDBDataList = employeeDBService.retrieveDataInDateRange(startDate, endDate);
+        Assertions.assertEquals(2, employeeDBDataList.size());
     }
 }

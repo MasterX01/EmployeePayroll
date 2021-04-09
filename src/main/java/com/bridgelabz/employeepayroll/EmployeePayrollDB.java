@@ -3,6 +3,7 @@ package com.bridgelabz.employeepayroll;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EmployeePayrollDB {
@@ -39,4 +40,22 @@ public class EmployeePayrollDB {
         return result;
     }
 
+    public List<EmployeeDBData> retrieveInDateRange(String startDate, String endDate) throws SQLException {
+        String query = "SELECT * FROM employee_payroll WHERE start BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, startDate);
+        preparedStatement.setString(2, endDate);
+        List<EmployeeDBData> employeeDBDataList = new ArrayList<>();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            double salary = resultSet.getDouble("salary");
+            String gender = resultSet.getString("gender");
+            LocalDate date = resultSet.getDate("start").toLocalDate();
+            employeeDBDataList.add(new EmployeeDBData(id, name, salary, gender, date));
+        }
+        connection.close();
+        return employeeDBDataList;
+    }
 }

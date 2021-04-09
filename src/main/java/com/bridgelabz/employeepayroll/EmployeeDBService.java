@@ -3,9 +3,11 @@ package com.bridgelabz.employeepayroll;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class EmployeeDBService {
+
     public enum IO_Service {DB_IO}
 
     public List<EmployeeDBData> employeeDBDataList;
@@ -30,5 +32,9 @@ public class EmployeeDBService {
             }
         }
         return null;
+    }
+
+    public List<EmployeeDBData> retrieveDataInDateRange(String startDate, String endDate) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveInDateRange(startDate, endDate);
     }
 }
