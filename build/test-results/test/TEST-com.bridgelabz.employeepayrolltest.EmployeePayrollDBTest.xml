@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-07T14:36:04" hostname="DESKTOP-2DC5FKU" time="1.119">
+<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-08T08:24:07" hostname="DESKTOP-2DC5FKU" time="0.387">
   <properties/>
-  <testcase name="given3EmployeesInDB_whenChecked_ShouldReturnEmployeeCount()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="1.119"/>
+  <testcase name="givenDBWith3Employees_whenUpdatingSalary_ShouldMatchWithGivenSalary()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.387"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

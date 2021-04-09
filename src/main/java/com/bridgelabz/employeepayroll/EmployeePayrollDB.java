@@ -1,9 +1,6 @@
 package com.bridgelabz.employeepayroll;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +10,8 @@ public class EmployeePayrollDB {
     public EmployeePayrollDB() throws SQLException, ClassNotFoundException {
     }
 
-    public List<EmployeeDBData> retrieveData() throws SQLException, ClassNotFoundException {
-        String query = "Select * from employee_payroll;";
+    public List<EmployeeDBData> retrieveData() throws SQLException {
+        String query = "SELECT * FROM employee_payroll;";
         List<EmployeeDBData> employeeDBDataList = new ArrayList<>();
         Statement statement = connection.createStatement();
         try{
@@ -31,4 +28,15 @@ public class EmployeePayrollDB {
         connection.close();
         return  employeeDBDataList;
     }
+
+
+    public int updateSalary(String name, double salary) throws SQLException {
+        String query = "UPDATE employee_payroll SET salary=? WHERE name=?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setDouble(1, salary);
+        preparedStatement.setString(2, name);
+        int result = preparedStatement.executeUpdate();
+        return result;
+    }
+
 }
