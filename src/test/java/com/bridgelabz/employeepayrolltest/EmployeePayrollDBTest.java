@@ -34,4 +34,39 @@ public class EmployeePayrollDBTest {
         List<EmployeeDBData> employeeDBDataList = employeeDBService.retrieveDataInDateRange(startDate, endDate);
         Assertions.assertEquals(2, employeeDBDataList.size());
     }
+
+    @Test
+    public void givenEmployeeDatabase_ShouldReturnSumOfSalaryForFemales() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        double femaleSalary = employeeDBService.getTotalSalaryForGender("F");
+        Assertions.assertEquals(2500000, femaleSalary);
+    }
+
+    @Test
+    public void givenEmployeeDatabase_ShouldReturnAvgOfSalaryForFemales() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        double femaleSalary = employeeDBService.getAvgSalaryForGender("F");
+        Assertions.assertEquals(2500000, femaleSalary);
+    }
+
+    @Test
+    public void givenEmployeeDatabase_ShouldReturnMinSalaryForFemales() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        double femaleSalary = employeeDBService.getMinSalaryForGender("F");
+        Assertions.assertEquals(2500000, femaleSalary);
+    }
+
+    @Test
+    public void givenEmployeeDatabase_ShouldReturnMaxSalaryForFemales() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        double femaleSalary = employeeDBService.getMaxSalaryForGender("F");
+        Assertions.assertEquals(2500000, femaleSalary);
+    }
+
+    @Test
+    public void givenEmployeeDatabase_ShouldReturnCountOfFemales() throws SQLException, ClassNotFoundException {
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        int femaleSalary = employeeDBService.getCountGender("F");
+        Assertions.assertEquals(1, femaleSalary);
+    }
 }

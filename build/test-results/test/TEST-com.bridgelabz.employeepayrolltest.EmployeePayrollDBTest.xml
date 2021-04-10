@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-09T06:10:38" hostname="DESKTOP-2DC5FKU" time="0.393">
+<testsuite name="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-04-10T11:26:32" hostname="DESKTOP-2DC5FKU" time="0.913">
   <properties/>
-  <testcase name="givenDateRange_ShouldReturnEmployeesWhoJoinedInDateRange()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.393"/>
+  <testcase name="givenDBWith3Employees_whenUpdatingSalary_ShouldMatchWithGivenSalary()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.411"/>
+  <testcase name="givenDateRange_ShouldReturnEmployeesWhoJoinedInDateRange()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.012"/>
+  <testcase name="givenEmployeeDatabase_ShouldReturnSumOfSalaryForFemales()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.015"/>
+  <testcase name="givenEmployeeDatabase_ShouldReturnAvgOfSalaryForFemales()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.074"/>
+  <testcase name="given3EmployeesInDB_whenChecked_ShouldReturnEmployeeCount()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.301"/>
+  <testcase name="givenEmployeeDatabase_ShouldReturnMinSalaryForFemales()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.018"/>
+  <testcase name="givenEmployeeDatabase_ShouldReturnMaxSalaryForFemales()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.064"/>
+  <testcase name="givenEmployeeDatabase_ShouldReturnCountOfFemales()" classname="com.bridgelabz.employeepayrolltest.EmployeePayrollDBTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -58,4 +58,59 @@ public class EmployeePayrollDB {
         connection.close();
         return employeeDBDataList;
     }
+
+    public double retrieveTotalSalaryBasedOnGender(String gender) throws SQLException {
+        String query = "SELECT SUM(salary) FROM employee_payroll WHERE gender=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gender);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return resultSet.getDouble("salary");
+    }
+
+    public double retrieveAvgSalaryBasedOnGender(String gender) throws SQLException {
+        String query = "SELECT AVG(salary) FROM employee_payroll WHERE gender=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gender);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return resultSet.getDouble("salary");
+    }
+
+    public double retrieveMinSalaryBasedOnGender(String gender) throws SQLException {
+        String query = "SELECT MIN(salary) FROM employee_payroll WHERE gender=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gender);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return resultSet.getDouble("salary");
+    }
+
+    public double retrieveMaxSalaryBasedOnGender(String gender) throws SQLException {
+        String query = "SELECT MAX(salary) FROM employee_payroll WHERE gender=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gender);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return resultSet.getDouble("salary");
+    }
+
+    public int retrieveCountOfGender(String gender) throws SQLException {
+        String query = "SELECT COUNT(salary) FROM employee_payroll WHERE gender=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, gender);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return resultSet.getInt(1);
+    }
 }

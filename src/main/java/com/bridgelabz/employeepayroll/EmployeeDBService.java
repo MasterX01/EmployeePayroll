@@ -37,4 +37,24 @@ public class EmployeeDBService {
     public List<EmployeeDBData> retrieveDataInDateRange(String startDate, String endDate) throws SQLException, ClassNotFoundException {
         return new EmployeePayrollDB().retrieveInDateRange(startDate, endDate);
     }
+
+    public double getTotalSalaryForGender(String gender) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveTotalSalaryBasedOnGender(gender);
+    }
+
+    public double getAvgSalaryForGender(String gender) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveAvgSalaryBasedOnGender(gender);
+    }
+
+    public double getMinSalaryForGender(String gender) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveMinSalaryBasedOnGender(gender);
+    }
+
+    public double getMaxSalaryForGender(String gender) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveMaxSalaryBasedOnGender(gender);
+    }
+
+    public int getCountGender(String gender) throws SQLException, ClassNotFoundException {
+        return new EmployeePayrollDB().retrieveCountOfGender(gender);
+    }
 }
