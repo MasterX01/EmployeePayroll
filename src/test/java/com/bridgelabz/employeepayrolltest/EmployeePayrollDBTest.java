@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class EmployeePayrollDBTest {
@@ -68,5 +67,17 @@ public class EmployeePayrollDBTest {
         EmployeeDBService employeeDBService = new EmployeeDBService();
         int femaleSalary = employeeDBService.getCountGender("F");
         Assertions.assertEquals(1, femaleSalary);
+    }
+
+    @Test
+    public void givenDetails_whenAddedToDatabase_ShouldReflectInList() throws ClassNotFoundException, SQLException{
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        String name = "Akash";
+        double salary = 3500000;
+        String gender = "M";
+        String start = "2012-12-12";
+        String dept = "DevOps";
+        List<EmployeeDBData> employeeList = employeeDBService.addNewEmployee(name, salary, gender, start, dept);
+        Assertions.assertEquals(name, employeeList.get(0).name);
     }
 }
