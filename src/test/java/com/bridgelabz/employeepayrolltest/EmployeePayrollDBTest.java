@@ -80,4 +80,12 @@ public class EmployeePayrollDBTest {
         List<EmployeeDBData> employeeList = employeeDBService.addNewEmployee(name, salary, gender, start, dept);
         Assertions.assertEquals(name, employeeList.get(0).name);
     }
+
+    @Test
+    public void givenName_ShouldRetrieveDataForActiveEmployees() throws ClassNotFoundException, SQLException{
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        String name = "Akash";
+        int success = employeeDBService.deleteEmployee(name);
+        Assertions.assertEquals(15, success);
+    }
 }

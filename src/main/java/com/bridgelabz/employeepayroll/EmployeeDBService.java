@@ -75,4 +75,8 @@ public class EmployeeDBService {
         this.employeeDBDataList.add(emp);
         return employeeDBDataList;
     }
+
+    public int deleteEmployee(String name) throws ClassNotFoundException, SQLException{
+        return new EmployeePayrollDB().deleteEmployee(name);
+    }
 }

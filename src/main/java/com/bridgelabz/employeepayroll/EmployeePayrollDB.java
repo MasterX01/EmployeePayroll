@@ -169,4 +169,12 @@ public class EmployeePayrollDB {
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet;
     }
+
+    public int deleteEmployee(String name) throws SQLException {
+        String query = "update employee_payroll set is_active=false where name=?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, name);
+        int success = preparedStatement.executeUpdate();
+        return success;
+    }
 }
