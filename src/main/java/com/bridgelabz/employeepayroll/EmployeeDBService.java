@@ -3,14 +3,14 @@ package com.bridgelabz.employeepayroll;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDBService {
 
     public enum IO_Service {DB_IO}
 
-    public List<EmployeeDBData> employeeDBDataList;
+    public List<EmployeeDBData> employeeDBDataList = new ArrayList<EmployeeDBData>();
 
     public List<EmployeeDBData> retrieveDBData(IO_Service io_service) throws SQLException, ClassNotFoundException {
         if (io_service.equals(IO_Service.DB_IO)) {
@@ -56,5 +56,23 @@ public class EmployeeDBService {
 
     public int getCountGender(String gender) throws SQLException, ClassNotFoundException {
         return new EmployeePayrollDB().retrieveCountOfGender(gender);
+    }
+
+    public List<EmployeeDBData> addNewEmployee(String name,double salary,String gender,String start, String dept) throws ClassNotFoundException, SQLException{
+        EmployeeDBData emp = null;
+        int id = new EmployeePayrollDB().addNewEmployee(name, salary, gender, start, dept);
+        ResultSet resultSet = new EmployeePayrollDB().retrieveSingleEmployee(id);
+        while(resultSet.next()){
+            if(resultSet.getInt("id") == id){
+                int empID = resultSet.getInt("id");
+                String empName = resultSet.getString("name");
+                double empSalary = resultSet.getDouble("salary");
+                String gen = resultSet.getString("gender");
+                LocalDate empDate = resultSet.getDate("start").toLocalDate();
+                emp = new EmployeeDBData(empID, empName, empSalary, gen, empDate);
+            }
+        }
+        this.employeeDBDataList.add(emp);
+        return employeeDBDataList;
     }
 }
