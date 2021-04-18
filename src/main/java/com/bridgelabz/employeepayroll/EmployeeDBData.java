@@ -8,6 +8,7 @@ public class EmployeeDBData {
     public double salary;
     public String gender;
     public LocalDate start;
+    public String dept;
 
     public EmployeeDBData(int empID, String name, double salary, String gender, LocalDate start){
         this.empID = empID;
@@ -15,6 +16,14 @@ public class EmployeeDBData {
         this.salary = salary;
         this.gender = gender;
         this.start = start;
+    }
+
+    public EmployeeDBData(String name, double salary, String gender, LocalDate start, String dept){
+        this.name = name;
+        this.salary = salary;
+        this.gender = gender;
+        this.start = start;
+        this.dept = dept;
     }
 
     public void setEmpID(int empID) { this.empID = empID; }

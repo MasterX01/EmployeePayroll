@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeeDBService {
 
@@ -78,5 +80,21 @@ public class EmployeeDBService {
 
     public int deleteEmployee(String name) throws ClassNotFoundException, SQLException{
         return new EmployeePayrollDB().deleteEmployee(name);
+    }
+
+    public void addMultipleEmployees(List<EmployeeDBData> employeeList) {
+        Map<Integer, Boolean> employeeStatus = new HashMap<Integer, Boolean>();
+        employeeList.forEach(EmployeeDBData -> {
+            Runnable taskRunnable = () -> {
+                employeeStatus.put(EmployeeDBData.hashCode(), false);
+                try {
+                    new EmployeePayrollDB().addNewEmployeeWithThreads(EmployeeDBData.name, EmployeeDBData.salary, EmployeeDBData.gender, EmployeeDBData.start, EmployeeDBData.dept);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            };
+        }); 
     }
 }

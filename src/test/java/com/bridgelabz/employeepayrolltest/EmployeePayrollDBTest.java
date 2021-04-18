@@ -2,10 +2,17 @@ package com.bridgelabz.employeepayrolltest;
 
 import com.bridgelabz.employeepayroll.EmployeeDBData;
 import com.bridgelabz.employeepayroll.EmployeeDBService;
+import com.bridgelabz.employeepayroll.EmployeePayrollService.IOService;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class EmployeePayrollDBTest {
@@ -86,6 +93,21 @@ public class EmployeePayrollDBTest {
         EmployeeDBService employeeDBService = new EmployeeDBService();
         String name = "Akash";
         int success = employeeDBService.deleteEmployee(name);
-        Assertions.assertEquals(15, success);
+        Assertions.assertEquals(1, success);
+    }
+
+    @Test
+    public void givenMultipleEmployee_ShouldAddToDBUsingThreads(){
+        EmployeeDBData[] employeeDBDatas = {
+            new EmployeeDBData("Vaishali", 1000000, "F",  Date.valueOf("2017-08-15").toLocalDate(), "HR"),
+            new EmployeeDBData("Abhinav", 1000000, "M",  Date.valueOf("2015-08-15").toLocalDate(), "Cleaning"),
+            new EmployeeDBData("Ashish", 1000000, "M",  Date.valueOf("2021-08-15").toLocalDate(), "Marketing"),
+            new EmployeeDBData("Utkarsh", 1000000, "M",  Date.valueOf("2020-05-15").toLocalDate(), "Security"),
+        };
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        Instant start = Instant.now();
+        employeeDBService.addMultipleEmployees(Arrays.asList(employeeDBDatas));
+        Instant end = Instant.now();
+        System.out.println("Duration to add employee: " + Duration.between(start, end));
     }
 }
