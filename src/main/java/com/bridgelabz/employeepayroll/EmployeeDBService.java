@@ -82,7 +82,7 @@ public class EmployeeDBService {
         return new EmployeePayrollDB().deleteEmployee(name);
     }
 
-    public void addMultipleEmployees(List<EmployeeDBData> employeeList) {
+    public void addMultipleEmployees(List<EmployeeDBData> employeeList) throws InterruptedException {
         Map<Integer, Boolean> employeeStatus = new HashMap<Integer, Boolean>();
         employeeList.forEach(EmployeeDBData -> {
             Runnable taskRunnable = () -> {
@@ -90,11 +90,15 @@ public class EmployeeDBService {
                 try {
                     new EmployeePayrollDB().addNewEmployeeWithThreads(EmployeeDBData.name, EmployeeDBData.salary, EmployeeDBData.gender, EmployeeDBData.start, EmployeeDBData.dept);
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
+                employeeStatus.put(EmployeeDBData.hashCode(), true);
             };
+            Thread thread = new Thread(taskRunnable, EmployeeDBData.name);
+            thread.start();
         }); 
+        while(employeeStatus.containsValue(false)){
+            Thread.sleep(100);
+        }
     }
 }
