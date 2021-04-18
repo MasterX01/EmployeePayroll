@@ -101,4 +101,14 @@ public class EmployeeDBService {
             Thread.sleep(100);
         }
     }
+
+    public void addMultipleEmployeesWithoutThreads(List<EmployeeDBData> employeeList) {
+        employeeList.forEach(EmployeeDBData -> {
+            try {
+                new EmployeePayrollDB().addNewEmployeeWithThreads(EmployeeDBData.name, EmployeeDBData.salary, EmployeeDBData.gender, EmployeeDBData.start, EmployeeDBData.dept);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }

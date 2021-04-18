@@ -111,4 +111,20 @@ public class EmployeePayrollDBTest {
         System.out.println("Duration to add employee: " + Duration.between(start, end));
         Assertions.assertEquals(7, employeeDBService.retrieveDBData(EmployeeDBService.IO_Service.DB_IO).size());
     }
+
+    @Test
+    public void givenMultipleEmployee_ShouldAddToDBWithoutThreads() throws InterruptedException, ClassNotFoundException, SQLException{
+        EmployeeDBData[] employeeDBDatas = {
+            new EmployeeDBData("Vaishali", 1000000, "F",  Date.valueOf("2017-08-15").toLocalDate(), "HR"),
+            new EmployeeDBData("Abhinav", 1000000, "M",  Date.valueOf("2015-08-15").toLocalDate(), "Cleaning"),
+            new EmployeeDBData("Ashish", 1000000, "M",  Date.valueOf("2021-08-15").toLocalDate(), "Marketing"),
+            new EmployeeDBData("Utkarsh", 1000000, "M",  Date.valueOf("2020-05-15").toLocalDate(), "Security"),
+        };
+        EmployeeDBService employeeDBService = new EmployeeDBService();
+        Instant start = Instant.now();
+        employeeDBService.addMultipleEmployeesWithoutThreads(Arrays.asList(employeeDBDatas));
+        Instant end = Instant.now();
+        System.out.println("Duration to add employee without threads: " + Duration.between(start, end));
+        Assertions.assertEquals(11, employeeDBService.retrieveDBData(EmployeeDBService.IO_Service.DB_IO).size());
+    }
 }
